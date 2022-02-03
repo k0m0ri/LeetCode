@@ -7,21 +7,18 @@ class Solution:
     # post:3
     def majorityElement(self, nums):
         map = {}
-        majority_element = math.ceil(len(nums) / 2)
-
-        # corner case
-        if len(nums) == 1:
-            return nums[0]
-
         for num in nums:
             if num in map:
                 map[num] += 1
             else:
                 map[num] = 1
 
+        majority_element = nums[0]
         for key, val in map.items():
-            if val >= majority_element:
-                return key
+            if val >= math.ceil(len(nums) / 2):
+                majority_element = key
+
+        return majority_element
 
 
 solution = Solution()
